@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Guess The Mystery Number</h1>
+
+    <p class="instructions">
+        This game allows you to generate three mysterious numbers between 1 and 20. After a number
+        has been generated, you have four chances (one round) to guess it based on the hints
+        below ('Guess stats'). The player wins the game if he makes at least two correct guesses.
+    </p>
+
+    <div class="container">
+        <div class="controls">
+            <button id="generateNumberBtn">Generate mystery number</button>
+
+            <div class="guess">
+                <label for="myInput">Enter your guess: </label>
+                <input type="text" id="myInput">
+            </div>
+
+            <button id="processEntry">Process entry</button>
+            <button id="startRound">Start new round</button>
+            <button id="startGame">Start new game</button>
+        </div>
+
+        <div class="stats">
+            <h3>Round <span id="roundCount"></span></h3>
+            <p>Numbers guessed: <span id="guesses"></span></p>
+            <p>Guess stats: <span id="guessStats"></span></p>
+            <p>Rounds lost: <span id="roundsLost">0</span></p>
+            <p>Rounds won: <span id="roundsWon">0</span></p>
+            <p>Game stats: <span id="gameStats"></span></p>
+        </div>
+    </div>
+
+    <audio controls>
+        <source id="defeat" src="./sounds/defeat.wav" type="audio/wav">
+    </audio>
+
+    <audio controls>
+        <source id="victory" src="./sounds/victory.wav" type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
