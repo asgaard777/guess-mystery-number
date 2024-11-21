@@ -1,4 +1,4 @@
-"strict mode";
+ "strict mode";
 
 const mysteryNumberBtn = document.querySelector("#generateNumberBtn");
 const mysteryNumberField = document.querySelector("#myInput");
@@ -28,10 +28,12 @@ function resetRound() {
     mysteryNumberField.value = "";
     guessesSpan.textContent = "";
     guessStatsSpan.textContent = "";
-    setInputButtonsMode(false, true, true);
+    setInputButtonsMode(false, true, true);       
 }
 
 //--------------------------------------------------------------------
+
+
 
 function setInputButtonsMode(mysteryNumberBtnMode, inputFieldMode, processEntryBtnMode) {
     mysteryNumberBtn.disabled = mysteryNumberBtnMode;
@@ -49,11 +51,11 @@ function generateMysteryNumber() {
 }
 
 function getGameStats() {
-    if (wonRoundCount >= 2 || lostRoundCount <= 1) {
+    if (wonRoundCount >= 2) {
         gameStatsSpan.style.color = 'blue';
         gameStatsSpan.textContent = 'Won! Congrats!';
         new Audio("./sounds/victory.wav").play();
-    } else {
+    } else if (lostRoundCount >= 2) {
         gameStatsSpan.style.color = 'red';
         gameStatsSpan.textContent = 'Sorry, you lost.';
         new Audio("./sounds/defeat.wav").play();
@@ -85,7 +87,7 @@ function guessMysteryNumber(val) {
         guessStatsSpan.textContent = "Guess must be between 1 and 20.";
         return;
     }
-    if (attemptCount <= MAX_GUESSES_ALLOWED) {
+    if (attemptCount < MAX_GUESSES_ALLOWED) {
         ++attemptCount;
         guesses.push(val);
         guessesSpan.textContent = guesses.join(" - ");
